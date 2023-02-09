@@ -5,7 +5,7 @@ WORKDIR /app
 COPY app.py requirements.txt ./
 
 # Install pip dependencies from requirements
-RUN pip3 install -r requirements.txt
+RUN pip3 install Flask==1.1.2
 
 # Set YOUR_NAME environment variable
 ENV YOUR_NAME="Leon Robinson"

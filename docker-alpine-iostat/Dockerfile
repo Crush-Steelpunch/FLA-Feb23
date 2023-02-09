@@ -1,2 +1,2 @@
 FROM alpine
-CMD iostat 2
+ENTRYPOINT iostat 2

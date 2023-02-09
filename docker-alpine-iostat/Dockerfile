@@ -1,2 +1,3 @@
 FROM alpine
-ENTRYPOINT iostat 2
+ENTRYPOINT iostat
+CMD 2

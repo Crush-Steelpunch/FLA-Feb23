@@ -1,3 +1,3 @@
 FROM alpine
-ENTRYPOINT iostat
-CMD 2
+ENTRYPOINT ["iostat"]
+CMD ["2"]

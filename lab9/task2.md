@@ -2,7 +2,7 @@
 
 ## MySQL
 
-## Dockerfile
+### Dockerfile
 
 - ENV for MYSQL_ROOT_PASSWORD to be [PASSWORD] and MYSQL_DATABASE to be flask-db
 - COPY the sql file to  /docker-entrypoint-initdb.d

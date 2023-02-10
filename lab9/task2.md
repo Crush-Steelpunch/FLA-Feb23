@@ -10,6 +10,7 @@
 ### run
 - need a volume to be mounted on /var/lib/mysql
 - need the container name mysql
+- need a user created network
 
 ## flask app
 

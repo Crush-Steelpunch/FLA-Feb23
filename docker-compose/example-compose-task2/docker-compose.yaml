@@ -1,0 +1,30 @@
+services:
+  lab9-db:
+    image: task2-db
+    container_name: mysql
+    networks:
+      - lab9net
+    volumes:
+      - lab9-dbvol:/var/lib/mysql
+    environment:                    # don't need these as I hardcoded them into the image
+      - MYSQL_ROOT_PASSWORD=[PASSWORD]
+      - MYSQL_DATABASE=flask-db
+  lab9-app:
+    image: task2-app
+    container_name: flask-app
+    networks:
+      - lab9net
+  lab9-nginx:
+    image: nginx
+    ports:
+      - 80:80
+    networks:
+      - lab9net
+    volumes:
+      - type: bind
+        source: /home/ubuntu/dockerfileexercise/task2/nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
+volumes:
+  lab9-dbvol:
+networks:
+  lab9net: {}

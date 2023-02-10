@@ -24,4 +24,7 @@
 
 ### run
 
-bind mount nginx.conf into /etc/nginx
+- bind mount nginx.conf into /etc/nginx
+- expose port 80 
+- same network as mysql container
+

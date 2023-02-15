@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "This is a web page create from a script in a jenkins job for $MY_NAME" > test-page.html

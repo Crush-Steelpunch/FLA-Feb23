@@ -6,12 +6,13 @@ pipeline {
             steps {
                 echo 'Build Stage'
                 git branch: 'main', poll: false, url: 'https://github.com/Crush-Steelpunch/Jenkins-Easy-Runstage.git'
+                sh 'myscript'
             }
         }
         stage('Test') {
             steps {
                 withEnv(['MY_NAME=Jane']) {
-                   echo 'Test Stage $MY_NAME'
+                    echo 'Test Stage ${MY_NAME}'
                    sh 'sleep 10'
                    sh '''#!/bin/bash
                       cut -f1 -d: /etc/passwd > myfile1'''

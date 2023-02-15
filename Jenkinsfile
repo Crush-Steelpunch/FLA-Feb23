@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Build Stage'
                 git branch: 'main', poll: false, url: 'https://github.com/Crush-Steelpunch/Jenkins-Easy-Runstage.git'
-                sh './myscript'
+                sh 'sh ./myscript'
             }
         }
         stage('Test') {

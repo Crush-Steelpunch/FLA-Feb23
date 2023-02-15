@@ -9,10 +9,10 @@ pipeline {
             }
         }
         stage('Test') {
-            withEnv(['MY_NAME=Jane']) {
-                steps {
+            steps {
+                withEnv(['MY_NAME=Jane']) {
                    echo 'Test Stage $MY_NAME'
-                   sh 'sleep 120'
+                   sh 'sleep 10'
                    sh '''#!/bin/bash
                       cut -f1 -d: /etc/passwd > myfile1'''
                 }

@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+                git branch: 'main', credentialsId: 'jenkinsaccesstoken', poll: false, url: 'https://github.com/Crush-Steelpunch/privaterepoexample.git'
+                withCredentials([string(credentialsId: 'DB_PASSWORD', variable: 'PIPE_SEC_VAR')]) {
+                // some block
+                    sh 'echo ${PIPE_SEC_VAR} > secfile1'
+                    sh 'cat secfile1'
+                }
+            }
+        }
+    }
+}

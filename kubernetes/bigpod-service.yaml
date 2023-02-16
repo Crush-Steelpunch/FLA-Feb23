@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: bigpod 
+  name: bigpod
+spec:
+  ports:
+  - port: 80
+    targetPort: 8123
+  selector:
+    app: bigpod
+  type: LoadBalancer

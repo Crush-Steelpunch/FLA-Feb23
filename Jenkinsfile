@@ -16,6 +16,7 @@ pipeline {
                    sh 'sleep 10'
                    sh '''#!/bin/bash
                       cut -f1 -d: /etc/passwd > myfile1'''
+		   sh 'cat myfile1'
                 }
             }
         }

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: bp12000 
+  labels:
+    app: bp12000
+spec:
+  containers:
+  - name: bp12000
+    image: baggypants12000/thisdoesnotexist
+    ports:
+    - containerPort: 80

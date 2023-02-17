@@ -16,7 +16,7 @@ spec:
       maxSurge: 34%
   template:
     metadata:
-      lables:
+      labels:
         app: mysql
     spec:
       containers:

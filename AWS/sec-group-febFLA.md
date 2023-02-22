@@ -1,4 +1,4 @@
-
+```
 
 Internet    ------------   Internet Gateway -------  VPC - subnet1---- 
                                                          |    |
@@ -24,7 +24,4 @@ Internet    ------------   Internet Gateway -------  VPC - subnet1----
                                                          |
                                                          - subnet3
 
-
-
-
-|
+```

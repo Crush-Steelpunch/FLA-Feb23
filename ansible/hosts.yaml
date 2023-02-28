@@ -1,7 +1,12 @@
 all:
   vars:
           ansible_ssh_private_key_file: /home/ubuntu/feb23-anster.pem
-  hosts:
+          ansible_user: ubuntu
+  children:
+    test:
+      hosts:
           172.31.41.169:
+    production:
+      hosts:
           172.31.40.243:
           172.31.43.195:

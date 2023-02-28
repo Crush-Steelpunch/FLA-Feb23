@@ -1,0 +1,25 @@
+- name: install docker
+  hosts: test
+  tasks:
+    - name: install recoomended prereqs
+      apt:
+        name:
+          - ca-certificates
+          - curl
+          - gnupg
+          - lsb-release
+    - name: add the docker signing key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: add the docker repository for the packages
+      ansible.builtin.apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu jammy stable
+        state: present
+    - name: install docker packages
+      apt:
+        name: 
+        - docker-ce 
+        - docker-ce-cli
+        state: present
+        update_cache: true

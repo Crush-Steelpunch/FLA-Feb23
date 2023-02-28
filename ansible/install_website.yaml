@@ -1,0 +1,24 @@
+- name: Install nginx and some web files
+  hosts: test
+  tasks:
+  - name: Install Nginx to the server
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
+  - name: Make sure the nginx is enabled
+    systemd_service:
+      name: nginx
+      enabled: true
+  - name: copy the index web file
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/index.html
+      dest: /var/www/html
+  - name: copy the index web file
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/my-profile.html
+      dest: /var/www/html
+  - name: copy the index web file
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/under-construction-gif-6.gif
+      dest: /var/www/html

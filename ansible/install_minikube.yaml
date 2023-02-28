@@ -1,0 +1,13 @@
+- name: isntall minikube
+  hosts: production
+  tasks:
+  - name: download the weirdo packgae
+    get_url:
+      url: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb
+      dest: /tmp/minikube_latest_amd64.deb
+  - name: install the packgage
+    apt:
+      deb: /tmp/minikube_latest_amd64.deb
+  
+
+

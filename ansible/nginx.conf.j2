@@ -3,7 +3,7 @@ events {}
     server {
       listen 80;
     location /hello {
-    return 200 "{{ nginx_content_var }}";
+    return 200 "{{ ansible_hostname }}";
    }
   } 
 }

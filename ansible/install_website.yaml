@@ -1,5 +1,5 @@
 - name: Install nginx and some web files
-  hosts: test
+  hosts: production
   vars:
     nginx_content_var: cheese
   tasks:

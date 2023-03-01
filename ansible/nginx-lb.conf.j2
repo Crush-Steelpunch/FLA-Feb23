@@ -1,0 +1,14 @@
+events {}
+http {
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://{{frontendpubip}};
+        }
+        location /backend {
+            proxy_pass http://{{backendpubip}}:3000;
+        }
+    }
+}
+
+

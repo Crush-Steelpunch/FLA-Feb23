@@ -1,10 +1,49 @@
 - name: The Lab 4 ansible Playbook By Leon
-  hosts: production
+  hosts: frontback
+  vars:
+    remoterepo: https://gitlab.com/Reece-Elder/reverseproxy-nginx
   tasks:
-    - name: grab a quote
-      uri:
-        url: https://quotes.rest/qod
-      register: qodurl
-    - name: print a nice quote
-      debug:
-        msg: "{{ qodurl.json.contents.quotes[0].quote }}"
+    #    - name: grab a quote
+    #  uri:
+    #    url: https://quotes.rest/qod
+    #  register: qodurl
+    #- name: print a nice quote
+    #  debug:
+    #    msg: "{{ qodurl.json.contents.quotes[0].quote }}"
+    - name: clone the git repo to both
+      ansible.builtin.git:
+        repo: "{{ remoterepo }}"
+        dest: /tmp/remoterepo
+        force: true
+    - name: make the appropriate script executable
+      ansible.builtin.file:
+        path: /tmp/remoterepo/{{ pathspec }}/setup.bash
+        mode: '0755'
+    - name: run the setup script
+      shell:
+        chdir: /tmp/remoterepo/{{ pathspec }}/
+        cmd: ./setup.bash
+
+- name: just for the reverse proxy
+  vars:
+    frontendpubip: 18.130.223.154
+    backendpubip: 18.134.131.15
+  hosts: revproxy
+  tasks:
+  - name: install nginx
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
+  - name: Install the nginx.conf
+    template:
+      src: nginx-lb.conf.j2
+      dest: /etc/nginx/nginx.conf
+    notify: restartnginx
+  handlers:
+    - name: restartnginx
+      systemd_service:
+        name: nginx
+        state: restarted
+
+

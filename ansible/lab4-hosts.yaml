@@ -1,0 +1,16 @@
+all:
+  vars:
+          ansible_ssh_private_key_file: /home/ubuntu/feb23-anster.pem
+          ansible_user: ubuntu
+  children:
+    frontback:
+      hosts:
+        172.31.5.141:
+          pathspec: frontend
+          pubip: 18.130.223.154
+        172.31.10.212:
+          pathspec: backend
+          pubip: 18.134.131.15
+    revproxy:
+      hosts:
+        172.31.10.184:

@@ -1,0 +1,10 @@
+- name: The Lab 4 ansible Playbook By Leon
+  hosts: production
+  tasks:
+    - name: grab a quote
+      uri:
+        url: https://quotes.rest/qod
+      register: qodurl
+    - name: print a nice quote
+      debug:
+        msg: "{{ qodurl.json.contents.quotes[0].quote }}"

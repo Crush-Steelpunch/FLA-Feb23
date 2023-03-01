@@ -1,0 +1,42 @@
+- name: Install nginx and some web files
+  hosts: production
+  vars:
+    nginx_content_var: cheese
+  tasks:
+  - name: Install Nginx to the server
+    apt:
+      name: nginx
+      state: present
+      update_cache: true
+  - name: Make sure the nginx is enabled
+    systemd_service:
+      name: nginx
+      enabled: true
+  - name: update the nginx config file
+    template:
+      src: nginx.conf.j2
+      dest: /etc/nginx/nginx.conf
+    notify:
+      - restart_nginx
+  - name: copy the index web file
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/index.html
+      dest: /var/www/html
+    register: copy_index_var
+  - name: Print out a load of stuff
+    debug:
+      var: copy_index_var
+  - name: copy the my-profile web file
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/my-profile.html
+      dest: /var/www/html
+  - name: copy the cool gif
+    copy:
+      src: /home/ubuntu/FLA-Feb23/webapp/under-construction-gif-6.gif
+      dest: /var/www/html
+
+  handlers:
+  - name: restart_nginx
+    systemd_service:
+      name: nginx
+      state: restarted

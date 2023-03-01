@@ -25,7 +25,7 @@
     register: copy_index_var
   - name: Print out a load of stuff
     debug:
-      var: copy_index_var
+      var: copy_index_var.dest
   - name: copy the my-profile web file
     copy:
       src: /home/ubuntu/FLA-Feb23/webapp/my-profile.html

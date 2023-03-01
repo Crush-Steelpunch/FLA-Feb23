@@ -1,7 +1,7 @@
 - name: Install nginx and some web files
   hosts: production
-  vars:
-    nginx_content_var: cheese
+    #  vars:
+    #nginx_content_var: cheese
   tasks:
   - name: Install Nginx to the server
     apt:

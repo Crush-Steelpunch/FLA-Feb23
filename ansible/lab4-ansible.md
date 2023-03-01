@@ -1,6 +1,6 @@
 # Lab 4
 
-Prerequisites: Ansible Host EC2, 2x EC2 instances with port 80 and 22 open, Ansible
+Prerequisites: Ansible Host EC2, 3x EC2 instances with port 3000, 80 and 22 open, Ansible
 Host can ssh to the other instances.
 Using a combination of Global vars, playbook vars, and handlers, create a new
 playbook that does the following tasks:
@@ -11,17 +11,17 @@ playbook that does the following tasks:
 - Installs a package specified at command line, e.g: 
   - unzip
   - ncdu
-- Installs nginx and uses handlers to restart on both machines
-  - refer to frontend and backend below for the correct configuration
-    - frontend ansible modules for:
-      - cloning a git repo
-      - changing permission
-      - running a script
-    - backend, ansible module for:
-      - cloning a git repo
-      - changing permission 
-      - running the script
-      - to install the pre-written config
+- Installs nginx on reverse-proxy machine and uses handlers to restart.
+- refer to frontend and backend below for the correct configuration
+  - frontend ansible modules for:
+    - cloning a git repo
+    - changing permission
+    - running a script
+  - backend, ansible module for:
+    - cloning a git repo
+    - changing permission 
+    - running the script
+    - to install the pre-written config
 
 
 - Creates a new file and appends text using the ansible copy module

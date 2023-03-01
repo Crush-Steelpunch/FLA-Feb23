@@ -2,6 +2,8 @@
   hosts: production
     #  vars:
     #nginx_content_var: cheese
+  vars:
+    html_filename_var: putithere.html
   tasks:
   - name: Install Nginx to the server
     apt:
@@ -34,6 +36,10 @@
     copy:
       src: /home/ubuntu/FLA-Feb23/webapp/under-construction-gif-6.gif
       dest: /var/www/html
+  - name: copy the testhtml to a path defined by a varable
+    copy:
+      src: testhtml.html
+      dest: /var/www/html/{{ html_filename_var }}
 
   handlers:
   - name: restart_nginx

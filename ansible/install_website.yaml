@@ -14,6 +14,10 @@
     copy:
       src: nginx.conf
       dest: /etc/nginx/
+  - name: restart the ngixn service because we changed the config
+    systemd_service:
+      name: nginx
+      state: restarted
   - name: copy the index web file
     copy:
       src: /home/ubuntu/FLA-Feb23/webapp/index.html

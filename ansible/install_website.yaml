@@ -10,6 +10,10 @@
     systemd_service:
       name: nginx
       enabled: true
+  - name: update the nginx config file
+    copy:
+      src: nginx.conf
+      dest: /etc/nginx/
   - name: copy the index web file
     copy:
       src: /home/ubuntu/FLA-Feb23/webapp/index.html

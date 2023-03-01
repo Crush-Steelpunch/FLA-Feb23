@@ -8,18 +8,19 @@ playbook that does the following tasks:
 - Clones down `https://gitlab.com/Reece-Elder/reverseproxy-nginx` specified at command line  
   - ansible git module
   - declare and use a variable
-- Installs a package specified at command line (unzip if no specified package)
+- Installs a package specified at command line, e.g: 
+  - unzip
   - ncdu
 - Installs nginx and uses handlers to restart on both machines
   - refer to frontend and backend below for the correct configuration
     - frontend ansible modules for:
-      - cloining a git repo
+      - cloning a git repo
       - changing permission
       - running a script
     - backend, ansible module for:
-      - cloining a git repo
+      - cloning a git repo
       - changing permission 
-      - running the scrip 
+      - running the script
       - to install the pre-written config
 
 

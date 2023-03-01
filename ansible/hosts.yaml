@@ -4,12 +4,12 @@ all:
           ansible_user: ubuntu
   children:
     test:
-      var:
+      vars:
          nginx_content_var: test-server
       hosts:
           172.31.41.169:
     production:
-      var:
+      vars:
          nginx_content_var: prod-server
       hosts:
           172.31.40.243:

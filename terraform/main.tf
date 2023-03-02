@@ -17,6 +17,15 @@ provider "aws" {
 
 # 
 
+variable "amiimageid" {
+	default = "ami-0aaa5410833273cfe"
+}
+
+
+variable "mykey" {
+	default = "feb23-anster"
+}
+
 resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
   type              = "ingress"
   from_port         = 22
@@ -27,12 +36,22 @@ resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
 }
 
 resource "aws_instance" "leonsinstance" {
-  ami           = "ami-0aaa5410833273cfe"
+  ami           = var.amiimageid
   instance_type = "t2.micro"
   associate_public_ip_address = true
-  key_name = "feb23-anster"
+  key_name = var.mykey
   tags = {
     Name = "LeonInstance"
+  }
+
+}
+resource "aws_instance" "leonsinstance2" {
+  ami           = var.amiimageid
+  instance_type = "t2.small"
+  associate_public_ip_address = true
+  key_name = var.mykey
+  tags = {
+    Name = "LeonInstance2"
   }
 
 }

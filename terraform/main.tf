@@ -72,6 +72,11 @@ resource "aws_instance" "leonsinstance2" {
 
 }
 
+resource "aws_key_pair" "terraformkey" {
+  key_name   = "terrakey"
+  public_key = var.terrakey
+}
+
 output "leoninstance2pubip" {
   value = aws_instance.leonsinstance2.public_ip
 }

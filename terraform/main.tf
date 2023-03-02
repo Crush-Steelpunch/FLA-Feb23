@@ -15,7 +15,7 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-resource "aws_instance" "demo1" {
+resource "aws_instance" "leonsinstance" {
   ami           = "ami-0aaa5410833273cfe"
   instance_type = "t2.micro"
 

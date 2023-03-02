@@ -15,7 +15,7 @@ provider "aws" {
   region = "eu-west-2"
 }
 
- 
+
 resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
   type              = "ingress"
   from_port         = 22
@@ -30,11 +30,11 @@ resource "aws_security_group" "allow_ssh" {
   description = "Allow TLS inbound traffic"
 
   ingress {
-    description      = "TLS from VPC"
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
+    description = "TLS from VPC"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
   }
 
   egress {
@@ -51,21 +51,21 @@ resource "aws_security_group" "allow_ssh" {
 }
 
 resource "aws_instance" "leonsinstance" {
-  ami           = var.amiimageid
-  instance_type = "t2.micro"
+  ami                         = var.amiimageid
+  instance_type               = "t2.micro"
   associate_public_ip_address = true
-  key_name = var.mykey
+  key_name                    = var.mykey
   tags = {
     Name = "LeonInstance"
   }
 
 }
 resource "aws_instance" "leonsinstance2" {
-  ami           = var.amiimageid
-  instance_type = "t2.small"
+  ami                         = var.amiimageid
+  instance_type               = "t2.small"
   associate_public_ip_address = true
-  vpc_security_group_ids = [aws_security_group.allow_ssh.id]
-  key_name = var.mykey
+  vpc_security_group_ids      = [aws_security_group.allow_ssh.id]
+  key_name                    = var.mykey
   tags = {
     Name = "LeonInstance2"
   }
@@ -73,9 +73,9 @@ resource "aws_instance" "leonsinstance2" {
 }
 
 output "leoninstance2pubip" {
-	value = aws_instance.leonsinstance2.public_ip
+  value = aws_instance.leonsinstance2.public_ip
 }
 
 output "leoninstancepubip" {
-	value = aws_instance.leonsinstance.public_ip
+  value = aws_instance.leonsinstance.public_ip
 }

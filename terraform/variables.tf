@@ -10,3 +10,5 @@ variable "mykey" {
 variable "mysecgroup" {
   default = "sg-00a6a30fd569b26bb"
 }
+variable "terrakey" {
+}

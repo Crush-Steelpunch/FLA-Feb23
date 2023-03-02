@@ -71,3 +71,11 @@ resource "aws_instance" "leonsinstance2" {
   }
 
 }
+
+output "leoninstance2pubip" {
+	value = aws_instance.leonsinstance2.public_ip
+}
+
+output "leoninstancepubip" {
+	value = aws_instance.leonsinstance.public_ip
+}

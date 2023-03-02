@@ -15,6 +15,17 @@ provider "aws" {
   region = "eu-west-2"
 }
 
+# 
+
+resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = "0.0.0.0/0"
+  security_group_id = "sg-00a6a30fd569b26bb"
+}
+
 resource "aws_instance" "leonsinstance" {
   ami           = "ami-0aaa5410833273cfe"
   instance_type = "t2.micro"

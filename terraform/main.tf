@@ -54,7 +54,7 @@ resource "aws_instance" "leonsinstance" {
   ami                         = var.amiimageid
   instance_type               = "t2.micro"
   associate_public_ip_address = true
-  key_name                    = var.terraformkey
+  key_name                    = aws_key_pair.terraformkey.name
   tags = {
     Name = "LeonInstance"
   }

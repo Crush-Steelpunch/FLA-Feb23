@@ -26,6 +26,9 @@ variable "mykey" {
 	default = "feb23-anster"
 }
 
+variable "mysecgroup" {
+	default = "sg-00a6a30fd569b26bb"
+}
 resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
   type              = "ingress"
   from_port         = 22
@@ -49,6 +52,7 @@ resource "aws_instance" "leonsinstance2" {
   ami           = var.amiimageid
   instance_type = "t2.small"
   associate_public_ip_address = true
+  security_groups = [var.mysecgroup]
   key_name = var.mykey
   tags = {
     Name = "LeonInstance2"

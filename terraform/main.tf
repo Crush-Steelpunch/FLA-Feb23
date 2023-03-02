@@ -15,20 +15,7 @@ provider "aws" {
   region = "eu-west-2"
 }
 
-# 
-
-variable "amiimageid" {
-	default = "ami-0aaa5410833273cfe"
-}
-
-
-variable "mykey" {
-	default = "feb23-anster"
-}
-
-variable "mysecgroup" {
-	default = "sg-00a6a30fd569b26bb"
-}
+ 
 resource "aws_security_group_rule" "leoninstancesecgroupruleSSH" {
   type              = "ingress"
   from_port         = 22

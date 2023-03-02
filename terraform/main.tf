@@ -52,7 +52,7 @@ resource "aws_instance" "leonsinstance2" {
   ami           = var.amiimageid
   instance_type = "t2.small"
   associate_public_ip_address = true
-  security_groups = [var.mysecgroup]
+  vpc_security_group_ids = [var.mysecgroup]
   key_name = var.mykey
   tags = {
     Name = "LeonInstance2"

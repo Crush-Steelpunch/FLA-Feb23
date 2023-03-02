@@ -18,5 +18,10 @@ provider "aws" {
 resource "aws_instance" "leonsinstance" {
   ami           = "ami-0aaa5410833273cfe"
   instance_type = "t2.micro"
+  associate_public_ip_address = true
+  key_name = "feb23-anster"
+  tags = {
+    Name = "LeonInstance"
+  }
 
 }
